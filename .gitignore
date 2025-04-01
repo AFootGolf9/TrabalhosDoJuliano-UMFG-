@@ -24,3 +24,6 @@ hs_err_pid*
 replay_pid*
 
 .fake
+
+#its late but we tried
+bin/*

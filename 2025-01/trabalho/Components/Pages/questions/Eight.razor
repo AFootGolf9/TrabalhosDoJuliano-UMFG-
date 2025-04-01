@@ -1,0 +1,38 @@
+@page "/questions/8"
+@using System.ComponentModel
+@rendermode InteractiveServer
+
+<PageTitle>Eigth</PageTitle>
+
+<h1>Eight</h1>
+
+<p>Input Dia da semana</p>
+
+<select @bind="diaSemana">
+    <option value="">Selecione um dia da semana</option>
+    @foreach (var dia in Enum.GetValues(typeof(DiaSemana)))
+    {
+        <option value="@((int)dia)">@GetEnumDescription((DiaSemana)dia)</option>
+    }
+</select>
+
+<button @onclick="OnButtonClick">Mostre descrição</button>
+
+<p>descrição: @descricao</p>
+
+@code {
+    private DiaSemana diaSemana;
+    private string descricao = "";
+
+    private string GetEnumDescription(DiaSemana diaSemana)
+    {
+        var field = diaSemana.GetType().GetField(diaSemana.ToString());
+        var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+        return attribute.Description;
+    }
+
+    void OnButtonClick()
+    {
+        descricao = GetEnumDescription(diaSemana);
+    }
+}

@@ -1,0 +1,30 @@
+@page "/questions/10"
+@rendermode InteractiveServer
+
+<PageTitle>Ten</PageTitle>
+
+<h1>Ten</h1>
+
+<p role="status">result: @result</p>
+
+<button class="btn btn-primary" @onclick="Draw">Click me</button>
+
+@code {
+    private string result = "Pending...";
+
+    private void Draw()
+    {
+        var random = new Random();
+        var number = random.Next(1, 7);
+
+        Console.WriteLine(number);
+
+        result = number switch
+        {
+            6 => "You win!",
+            _ => "Try again!"
+        };
+
+
+    }
+}

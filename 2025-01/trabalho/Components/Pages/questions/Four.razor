@@ -1,0 +1,30 @@
+@page "/questions/4"
+@rendermode InteractiveServer
+
+<PageTitle>Four</PageTitle>
+
+<h1>Four</h1>
+
+<p>Input age</p>
+
+<input type="number" @bind="age"/>
+
+<p>Result: @result</p>
+
+<button class="btn btn-primary" @onclick="OnParametersSet">Click</button>
+
+@code {
+    private int age;
+    private bool result;
+
+    protected override void OnInitialized()
+    {
+        age = 0;
+        result = false;
+    }
+
+    protected override void OnParametersSet()
+    {
+        result = age >= 18;
+    }
+}

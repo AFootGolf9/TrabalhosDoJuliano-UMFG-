@@ -1,0 +1,31 @@
+@page "/2"
+@rendermode InteractiveServer
+
+<PageTitle>Two</PageTitle>
+
+<h1>Two</h1>
+
+<p>Input Number</p>
+<p>Obs: é nessesario o uso de "." no lugar de "," e para trocar os resultados clicar no botao</p>
+
+<input type="number" @bind="number"/>
+
+<p>Result: @result</p>
+
+<button class="btn btn-primary" @onclick="OnParametersSet">Click</button>
+@code {
+    private float number = 0;
+    private float result = 0;
+
+    protected override void OnInitialized()
+    {
+        number = 0;
+        result = 0;
+    }
+
+    protected override void OnParametersSet()
+    {
+        result = (number * 9/5) + 32;
+    }
+}
+

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vtnIA0zLZhQ=",
+  "success": true,
+  "projectFilePath": "/home/nine9/progamacao/UMFG/pIV/trabalho/trabalho.csproj",
+  "expectedPackageFiles": [
+    "/home/nine9/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.2/microsoft.aspnetcore.app.ref.9.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

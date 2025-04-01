@@ -1,0 +1,29 @@
+@page "/questions/9"
+@rendermode InteractiveServer
+
+<PageTitle>Nine</PageTitle>
+
+<h1>Nine</h1>
+
+<p role="status">Current state: @state</p>
+
+<button class="btn btn-primary" @onclick="ChangeState">Click me</button>
+
+@code {
+    private bool currentState = false;
+    private string state = "Desligado";
+
+    private void ChangeState()
+    {
+        currentState = !currentState;
+
+        if (currentState)
+        {
+            state = "Ligado";
+        }
+        else
+        {
+            state = "Desligado";
+        }
+    }
+}

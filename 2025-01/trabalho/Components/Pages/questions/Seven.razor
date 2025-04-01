@@ -1,0 +1,36 @@
+@page "/questions/7"
+@rendermode InteractiveServer
+
+<PageTitle>Seven</PageTitle>
+
+<h1>Seven</h1>
+
+<p>Input value</p>
+
+<input type="number" @bind="value"/>
+
+<p>Input parcels</p>
+
+<input type="number" @bind="parcels"/>
+
+<p>Result: @result</p>
+
+<button class="btn btn-primary" @onclick="OnParametersSet">Click</button>
+
+@code {
+    private float value = 0;
+    private int parcels = 0;
+    private float result = 0;
+
+    protected override void OnInitialized()
+    {
+        value = 0;
+        parcels = 0;
+        result = 0;
+    }
+
+    protected override void OnParametersSet()
+    {
+        result = value / parcels;
+    }
+}

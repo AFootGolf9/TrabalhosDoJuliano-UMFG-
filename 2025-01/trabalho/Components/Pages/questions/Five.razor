@@ -1,0 +1,38 @@
+@page "/questions/5"
+@using System.ComponentModel
+@rendermode InteractiveServer
+
+<PageTitle>Five</PageTitle>
+
+<h1>Five</h1>
+
+<p>Input Tipo de Usuario</p>
+
+<select name="tipoUsuario" @bind="tipoUsuario">
+    <option value="">Selecione um tipo de usuário</option>
+    @foreach (var usuario in Enum.GetValues(typeof(TipoUsuario)))
+    {
+        <option value="@((int)usuario)">@GetEnumDescription((TipoUsuario)usuario)</option>
+    }
+</select>
+
+<button @onclick="OnButtonClick">Mostre descrição</button>
+
+<p>descrição: @descricao</p>
+
+@code {
+    private TipoUsuario tipoUsuario;
+    private string descricao = "";
+
+    private string GetEnumDescription(TipoUsuario tipoUsuario)
+    {
+        var field = tipoUsuario.GetType().GetField(tipoUsuario.ToString());
+        var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+        return attribute.Description;
+    }
+
+    void OnButtonClick()
+    {
+        descricao = GetEnumDescription(tipoUsuario);
+    }
+}

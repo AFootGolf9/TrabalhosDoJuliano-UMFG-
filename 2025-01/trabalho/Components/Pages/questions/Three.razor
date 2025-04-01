@@ -1,0 +1,41 @@
+@page "/questions/3"
+@rendermode InteractiveServer
+
+<PageTitle>Three</PageTitle>
+
+<h1>Three</h1>
+
+<p>Input date of birth</p>
+
+<input type="date" @bind="date"/>
+
+<p>Result: @result</p>
+
+<button class="btn btn-primary" @onclick="OnParametersSet">Click</button>
+
+@code {
+    private DateTime date;
+    private int result = 0;
+
+    protected override void OnInitialized()
+    {
+        date = DateTime.Now;
+        result = 0;
+    }
+
+    protected override void OnParametersSet()
+    {
+
+        DateTime today = DateTime.Now;
+
+        DateTime nextBirthday = new DateTime(date.Year, date.Month, date.Day);
+
+        while (nextBirthday < today)
+        {
+            nextBirthday = nextBirthday.AddYears(1);
+        }        
+
+        result = (nextBirthday - today).Days + 1;
+
+    }
+}
